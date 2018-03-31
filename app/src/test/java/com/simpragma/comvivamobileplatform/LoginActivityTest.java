@@ -26,69 +26,69 @@ import static junit.framework.Assert.assertNull;
 @RunWith(RobolectricTestRunner.class)
 public class LoginActivityTest extends LoginActivity {
 
-	private LoginActivity activity;
-	private LinearLayout.LayoutParams layoutParams;
-	private LinearLayout linearLayout;
-	private Style style;
+    private LoginActivity activity;
+    private LinearLayout.LayoutParams layoutParams;
+    private LinearLayout linearLayout;
+    private Style style;
 
-	@Before
-	public void setup() {
-		activity = Robolectric.setupActivity(LoginActivity.class);
-		layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.MATCH_PARENT);
-		linearLayout = new LinearLayout(activity);
+    @Before
+    public void setup() {
+        activity = Robolectric.setupActivity(LoginActivity.class);
+        layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        linearLayout = new LinearLayout(activity);
 
-		Property property = new Property();
-		property.setPadding(10);
-		property.setType(LAYOUT);
+        Property property = new Property();
+        property.setPadding(10);
+        property.setType(LAYOUT);
 
-		List<Property> properties = new ArrayList<>();
-		properties.add(property);
+        List<Property> properties = new ArrayList<>();
+        properties.add(property);
 
-		style = new Style();
-		style.setProperties(properties);
-	}
+        style = new Style();
+        style.setProperties(properties);
+    }
 
-	@Test
-	public void setViewsForActivity_allViewsAreCorrectlyAdded() throws Exception {
-		Screen loginScreen = new Screen();
+    @Test
+    public void setViewsForActivity_allViewsAreCorrectlyAdded() throws Exception {
+        Screen loginScreen = new Screen();
 
-		UiElement username = new UiElement();
-		username.setHint("Enter username");
-		username.setId(100);
-		username.setSlNo(1);
-		username.setType(WIDGET_EDIT_TEXT);
+        UiElement username = new UiElement();
+        username.setHint("Enter username");
+        username.setId(100);
+        username.setSlNo(1);
+        username.setType(WIDGET_EDIT_TEXT);
 
-		UiElement password = new UiElement();
-		password.setHint("Enter password");
-		password.setId(101);
-		password.setSlNo(2);
-		password.setInputType(INPUT_TYPE_PASSWORD);
-		password.setType(WIDGET_EDIT_TEXT);
+        UiElement password = new UiElement();
+        password.setHint("Enter password");
+        password.setId(101);
+        password.setSlNo(2);
+        password.setInputType(INPUT_TYPE_PASSWORD);
+        password.setType(WIDGET_EDIT_TEXT);
 
-		UiElement submitButton = new UiElement();
-		submitButton.setText("Submit");
-		submitButton.setId(100);
-		submitButton.setSlNo(1);
-		submitButton.setType(WIDGET_BUTTON);
+        UiElement submitButton = new UiElement();
+        submitButton.setText("Submit");
+        submitButton.setId(100);
+        submitButton.setSlNo(1);
+        submitButton.setType(WIDGET_BUTTON);
 
-		List<UiElement> uiElements = new ArrayList<>();
-		uiElements.add(username);
-		uiElements.add(password);
-		loginScreen.setUiElements(uiElements);
+        List<UiElement> uiElements = new ArrayList<>();
+        uiElements.add(username);
+        uiElements.add(password);
+        loginScreen.setUiElements(uiElements);
 
-		activity.setViewsForActivity(style, loginScreen, linearLayout, layoutParams, activity);
-		assertNotNull(activity.findViewById(username.getId()));
-		assertNotNull(activity.findViewById(password.getId()));
-		assertNotNull(activity.findViewById(submitButton.getId()));
-	}
+        activity.setViewsForActivity(style, loginScreen, linearLayout, layoutParams, activity);
+        assertNotNull(activity.findViewById(username.getId()));
+        assertNotNull(activity.findViewById(password.getId()));
+        assertNotNull(activity.findViewById(submitButton.getId()));
+    }
 
-	@Test
-	public void setViewsForActivity_noViewIsAdded() throws Exception {
-		Screen loginScreen = new Screen();
-		loginScreen.setUiElements(null);
+    @Test
+    public void setViewsForActivity_noViewIsAdded() throws Exception {
+        Screen loginScreen = new Screen();
+        loginScreen.setUiElements(null);
 
-		activity.setViewsForActivity(style, loginScreen, linearLayout, layoutParams, activity);
-		assertNull(activity.findViewById(100));
-	}
+        activity.setViewsForActivity(style, loginScreen, linearLayout, layoutParams, activity);
+        assertNull(activity.findViewById(100));
+    }
 }

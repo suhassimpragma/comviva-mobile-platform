@@ -12,9 +12,9 @@ import retrofit2.http.Header;
  */
 public interface ApiService {
 
-	@GET("_design/styles/_view/getAll?include_docs=true")
-	Call<StylesResponse> getStyles(@Header("Authorization") String authHeader);
+    @GET("_design/styles/_view/getAll?include_docs=true")
+    Call<StylesResponse> getStyles(@Header("Authorization") String authHeader);
 
-	@GET("_design/screens/_view/getAll?include_docs=true")
-	Call<ScreensResponse> getScreens(@Header("Authorization") String authHeader);
+    @GET("_design/screens/_view/getAll?include_docs=true")
+    Call<ScreensResponse> getScreens(@Header("Authorization") String authHeader);
 }

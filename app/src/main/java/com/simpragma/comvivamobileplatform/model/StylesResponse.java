@@ -6,14 +6,14 @@ import java.util.List;
 
 public class StylesResponse {
 
-	@SerializedName("rows")
-	private List<StyleRow> rows;
+    @SerializedName("rows")
+    private List<StyleRow> rows;
 
-	public List<StyleRow> getRows() {
-		return rows;
-	}
+    public List<StyleRow> getRows() {
+        return rows;
+    }
 
-	public void setRows(List<StyleRow> rows) {
-		this.rows = rows;
-	}
+    public void setRows(List<StyleRow> rows) {
+        this.rows = rows;
+    }
 }

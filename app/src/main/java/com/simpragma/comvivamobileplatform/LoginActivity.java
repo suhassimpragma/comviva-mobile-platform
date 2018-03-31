@@ -21,68 +21,68 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-	private static final String TAG = "LoginActivity";
-	private Style style;
-	private Screen screen;
-	private LinearLayout linearLayout;
-	private LinearLayout.LayoutParams layoutParams;
+    private static final String TAG = "LoginActivity";
+    private Style style;
+    private Screen screen;
+    private LinearLayout linearLayout;
+    private LinearLayout.LayoutParams layoutParams;
 
-	private static final String AUTH = "Basic Y29tdml2YTo0NTZDb212aXZhIQ==";
+    private static final String AUTH = "Basic Y29tdml2YTo0NTZDb212aXZhIQ==";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		linearLayout = new LinearLayout(this);
-		linearLayout.setOrientation(LinearLayout.VERTICAL);
-		layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.MATCH_PARENT);
-		getStyleAndScreens();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        getStyleAndScreens();
+    }
 
-	private void getStyleAndScreens() {
-		ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
-		Call<StylesResponse> operatorCall = apiService.getStyles(AUTH);
-		operatorCall.enqueue(new Callback<StylesResponse>() {
+    private void getStyleAndScreens() {
+        ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
+        Call<StylesResponse> operatorCall = apiService.getStyles(AUTH);
+        operatorCall.enqueue(new Callback<StylesResponse>() {
 
-			@Override
-			public void onResponse(Call<StylesResponse> call, Response<StylesResponse> response) {
-				style = response.body().getRows().get(0).getStyle();
-				Log.d(TAG, "Response: " + style.toString());
-				getScreens();
-			}
+            @Override
+            public void onResponse(Call<StylesResponse> call, Response<StylesResponse> response) {
+                style = response.body().getRows().get(0).getStyle();
+                Log.d(TAG, "Response: " + style.toString());
+                getScreens();
+            }
 
-			@Override
-			public void onFailure(Call<StylesResponse> call, Throwable t) {
-				Log.e(TAG, "Error: " + t);
-				Toast.makeText(LoginActivity.this, "Unable to fetch style data", Toast.LENGTH_LONG).show();
-			}
-		});
-	}
+            @Override
+            public void onFailure(Call<StylesResponse> call, Throwable t) {
+                Log.e(TAG, "Error: " + t);
+                Toast.makeText(LoginActivity.this, "Unable to fetch style data", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
-	private void getScreens() {
-		ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
-		Call<ScreensResponse> operatorCall = apiService.getScreens(AUTH);
-		operatorCall.enqueue(new Callback<ScreensResponse>() {
+    private void getScreens() {
+        ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
+        Call<ScreensResponse> operatorCall = apiService.getScreens(AUTH);
+        operatorCall.enqueue(new Callback<ScreensResponse>() {
 
-			@Override
-			public void onResponse(Call<ScreensResponse> call, Response<ScreensResponse> response) {
-				screen = response.body().getRows().get(0).getScreen();
-				Log.d(TAG, "Response: " + screen.toString());
-				setViewsForActivity(style, screen, linearLayout, layoutParams, LoginActivity.this);
-			}
+            @Override
+            public void onResponse(Call<ScreensResponse> call, Response<ScreensResponse> response) {
+                screen = response.body().getRows().get(0).getScreen();
+                Log.d(TAG, "Response: " + screen.toString());
+                setViewsForActivity(style, screen, linearLayout, layoutParams, LoginActivity.this);
+            }
 
-			@Override
-			public void onFailure(Call<ScreensResponse> call, Throwable t) {
-				Log.e(TAG, "Error: " + t);
-				Toast.makeText(LoginActivity.this, "Unable to fetch screen data", Toast.LENGTH_LONG).show();
-			}
-		});
-	}
+            @Override
+            public void onFailure(Call<ScreensResponse> call, Throwable t) {
+                Log.e(TAG, "Error: " + t);
+                Toast.makeText(LoginActivity.this, "Unable to fetch screen data", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
-	protected void setViewsForActivity(Style style, Screen screen, LinearLayout linearLayout,
-									   LinearLayout.LayoutParams layoutParams, Context context) {
-		ViewBuilderUtils.applyLayoutStyle(style, linearLayout);
-		ViewBuilderUtils.addViewsToLayout(screen, style, linearLayout, context);
-		setContentView(linearLayout, layoutParams);
-	}
+    protected void setViewsForActivity(Style style, Screen screen, LinearLayout linearLayout,
+                                       LinearLayout.LayoutParams layoutParams, Context context) {
+        ViewBuilderUtils.applyLayoutStyle(style, linearLayout);
+        ViewBuilderUtils.addViewsToLayout(screen, style, linearLayout, context);
+        setContentView(linearLayout, layoutParams);
+    }
 }
