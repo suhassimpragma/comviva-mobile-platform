@@ -1,5 +1,8 @@
 package com.simpragma.comvivamobileplatform;
 
+/**
+ * Contains constants that are used throughout the application
+ */
 public final class AppConstants {
 
 	public static final String WIDGET_TEXT_VIEW = "TextView";
