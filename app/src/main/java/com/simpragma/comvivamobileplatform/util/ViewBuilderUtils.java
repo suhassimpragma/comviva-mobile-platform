@@ -25,6 +25,10 @@ import static com.simpragma.comvivamobileplatform.AppConstants.WIDGET_TEXT_VIEW;
  */
 public class ViewBuilderUtils {
 
+    private ViewBuilderUtils() {
+        // Prevent instantiation of myself and my sub-classes
+    }
+
     /**
      * Adds views to {@link LinearLayout}
      *
@@ -48,6 +52,7 @@ public class ViewBuilderUtils {
                             addViewToLayout(uiElement, style, linearLayout, view);
                             break;
                         case WIDGET_TEXT_VIEW:
+                        default:
                             view = new TextView(context);
                             addViewToLayout(uiElement, style, linearLayout, view);
                             break;

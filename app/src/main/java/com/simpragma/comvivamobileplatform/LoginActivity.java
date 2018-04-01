@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getStyleAndScreens() {
-        ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<StylesResponse> operatorCall = apiService.getStyles(AUTH);
         operatorCall.enqueue(new Callback<StylesResponse>() {
 
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getScreens() {
-        ApiService apiService = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<ScreensResponse> operatorCall = apiService.getScreens(AUTH);
         operatorCall.enqueue(new Callback<ScreensResponse>() {
 
