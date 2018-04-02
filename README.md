@@ -16,6 +16,32 @@ be applied to the whole application.
 
 ```
 {
+   "_id":"Style",
+   "_rev":"32-c011a98fbf4ed9b332a192afd497862c",
+   "type":"style",
+   "properties":[
+      {
+         "type":"layout",
+         "background":"#A9D0F5",
+         "padding":25
+      },
+      {
+         "type":"edittext"
+      },
+      {
+         "type":"button"
+      }
+   ]
+}
+```
+
+We have `Screen` documents that contain the UI elements that should appear on a particular screen.
+For our example, we have taken up Login screen.
+
+## Sample Screen document
+
+```
+{
    "_id":"LoginScreen",
    "_rev":"11-2c867478544666576ecaad8eea700992",
    "type":"screen",
@@ -52,32 +78,6 @@ be applied to the whole application.
          "slNo":5,
          "type":"Button",
          "text":"Sign Up"
-      }
-   ]
-}
-```
-
-We have `Screen` documents that contains the UI elements that should be on a particular screen.
-For our example, we have taken up Login screen.
-
-## Sample Screen document
-
-```
-{
-   "_id":"Style",
-   "_rev":"32-c011a98fbf4ed9b332a192afd497862c",
-   "type":"style",
-   "properties":[
-      {
-         "type":"layout",
-         "background":"#A9D0F5",
-         "padding":25
-      },
-      {
-         "type":"edittext"
-      },
-      {
-         "type":"button"
       }
    ]
 }
