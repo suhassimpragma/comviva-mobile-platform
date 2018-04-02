@@ -88,4 +88,4 @@ Any change on the server is reflected on the next restart of the application.
 
 # Assumptions
 
-We have assumed that the UI elements will be displayed one below the other
+We have assumed that the UI elements will be displayed one below the other.
