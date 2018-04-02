@@ -85,3 +85,7 @@ For our example, we have taken up Login screen.
 
 Based on `Style` and `Screen` documents, the UI is built programmatically and displayed to the user.
 Any change on the server is reflected on the next restart of the application.
+
+# Assumptions
+
+We have assumed that the UI elements will be displayed one below the other
